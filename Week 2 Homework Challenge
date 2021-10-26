@@ -1,0 +1,47 @@
+import React from "react";
+import ReactDOM from "react-dom";
+import Search from "./Search";
+
+import "./styles.css";
+
+function App() {
+  return (
+    <div className="App">
+      <div>
+        <h1>Weather Search Engine</h1>
+        <Search />
+      </div>
+    </div>
+  );
+}
+
+const rootElement = document.getElementById("root");
+ReactDOM.render(<App />, rootElement);
+
+
+import React, { useState } from "react";
+import ReactDom from "react-dom";
+
+export default function Search() {
+  let [city, setCity] = useState(" ");
+  let message = `It is currently 20°C in ${city}`;
+
+  function submit(event) {
+    event.preventDefault();
+    ReactDom.render(message, document.getElementById("msg"));
+  }
+
+  function updateCity(event) {
+    setCity(event.target.value);
+  }
+
+  return (
+    <div>
+      <form onSubmit={submit}>
+        <input type="search" placeholder="Enter a city" onChange={updateCity} />
+        <input type="submit" value="search" />
+      </form>
+      <p id="msg"></p>
+    </div>
+  );
+}
