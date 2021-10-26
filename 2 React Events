@@ -1,0 +1,68 @@
+import React from "react";
+import ReactDOM from "react-dom";
+import Weather from "./Weather";
+import Forecast from "./Forecast";
+
+import "./App.css";
+
+function App() {
+  return (
+    <div className="App">
+      <h1>React Events</h1>
+
+      <h3>Challenge 1</h3>
+      <p>
+        Create a new component called Weather which renders a "Current
+        Temperature" button. Add the button here.
+        <Weather />
+      </p>
+
+      <h3>Challenge 2</h3>
+      <p>
+        When the button is clicked, alert "Coming soon..." Add the button here.
+        <Weather />
+      </p>
+
+      <h3>Challenge 3</h3>
+      <p>
+        Create a new component called Forecast which renders a link "See
+        forecast". When clicking on it, alert "Forecast feature is not ready
+        yet". Include the component here.
+        <Forecast />
+      </p>
+    </div>
+  );
+}
+
+const rootElement = document.getElementById("root");
+ReactDOM.render(<App />, rootElement);
+
+import React from "react";
+
+export default function Weather() {
+  function comingSoon() {
+    alert("Coming soon...");
+  }
+  return (
+    <div className="Weather">
+      <button onClick={comingSoon}> Current Temperature </button>
+    </div>
+  );
+}
+
+import React from "react";
+
+export default function Forecast() {
+  function seeForecast(event) {
+    event.preventDefault();
+    alert("Forecast feature is not ready yet.");
+  }
+  return (
+    <div className="Forecast">
+      <a href="/" onClick={seeForecast}>
+        {" "}
+        See Forecast{" "}
+      </a>
+    </div>
+  );
+}
