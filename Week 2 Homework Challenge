@@ -20,15 +20,14 @@ ReactDOM.render(<App />, rootElement);
 
 
 import React, { useState } from "react";
-import ReactDom from "react-dom";
 
 export default function Search() {
   let [city, setCity] = useState(" ");
-  let message = `It is currently 20°C in ${city}`;
+  const [message, setMessage] = useState("");
 
   function submit(event) {
     event.preventDefault();
-    ReactDom.render(message, document.getElementById("msg"));
+    setMessage(`It is currently 20°C in ${city}`);
   }
 
   function updateCity(event) {
@@ -41,7 +40,7 @@ export default function Search() {
         <input type="search" placeholder="Enter a city" onChange={updateCity} />
         <input type="submit" value="search" />
       </form>
-      <p id="msg"></p>
+      <h2>{message}</h2>
     </div>
   );
 }
