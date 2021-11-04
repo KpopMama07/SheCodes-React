@@ -1,0 +1,55 @@
+import React from "react";
+import ReactDOM from "react-dom";
+import Hello from "./Hello";
+
+import "./App.css";
+
+function App() {
+  return (
+    <div className="App">
+      <h1>React Conditional Rendering</h1>
+
+      <h3>Challenge 1</h3>
+      <p>
+        Create a new Component Hello return a h2 with the word "Hello" in it.
+        Include the component here.
+      </p>
+      <Hello language="English" />
+
+      <h3>Challenge 2</h3>
+      <p>
+        Send a property language and the component should render "Bonjour" if
+        language is french and "Hello" in other cases. Include the component
+        here for English and French
+      </p>
+      <Hello language="English" />
+      <Hello language="French" />
+
+      <h3>Challenge 3</h3>
+      <p>
+        Add the ability for the component to render "Hola" for Spanish. Include
+        the component here for Spanish
+      </p>
+      <Hello language="Spanish" />
+    </div>
+  );
+}
+
+const rootElement = document.getElementById("root");
+ReactDOM.render(<App />, rootElement);
+
+import React from "react";
+
+export default function hello(props) {
+  if (props.language === "English") {
+    return <h2> Hello </h2>;
+  } else {
+    if (props.language === "French") {
+      return <h2> Bonjour </h2>;
+    } else {
+      if (props.language === "Spanish") {
+        return <h2> Hola </h2>;
+      }
+    }
+  }
+}
