@@ -1,0 +1,102 @@
+import React from "react";
+import ReactDOM from "react-dom";
+import BalticCountries from "./BalticCountries";
+import Countries from "./Countries";
+
+import "./styles.css";
+
+function App() {
+  let countries = [
+    {
+      name: "France",
+      capital: "Paris"
+    },
+    {
+      name: "USA",
+      capital: "Washington DC"
+    },
+    {
+      name: "Australia",
+      capital: "Canberra"
+    },
+    {
+      name: "Japan",
+      capital: "Tokyo"
+    }
+  ];
+
+  return (
+    <div className="App">
+      <h1>React Loops</h1>
+
+      <h3>Challenge 1</h3>
+      <p>
+        Create a new Component called BalticCountries and list the 3 baltic
+        countries (Estonia, Latvia, Lithuania) without using loops or variables.
+        Include the component below.
+      </p>
+      <BalticCountries />
+
+      <h3>Challenge 2</h3>
+      <p>
+        Include a component called Countries below and send the variable
+        countries (created above) as a property. Create a new component called
+        Countries and list all countries from the Countries component using a
+        loop.
+      </p>
+      <Countries countries={countries} />
+
+      <h3>Challenge 3</h3>
+      <p>
+        Modify the countries variable in the code above so it includes the
+        country name but also the capital city of each country. Display each
+        country and capital city in the Countries component
+      </p>
+      <Countries countries={countries} />
+    </div>
+  );
+}
+
+const rootElement = document.getElementById("root");
+ReactDOM.render(<App />, rootElement);
+
+import React from "react";
+
+export default function countries() {
+  return (
+    <div className="countries">
+      <ul>
+        <li> Estonia </li>
+        <li> Latvia </li>
+        <li> Lithuania </li>
+      </ul>
+    </div>
+  );
+}
+
+import React from "react";
+import Country from "./Country";
+
+export default function Countries(props) {
+  return (
+    <ul className="Countries">
+      {props.countries.map((country, index) => {
+        return (
+          <li key={index}>
+            <Country country={country} />
+          </li>
+        );
+      })}
+    </ul>
+  );
+}
+
+import React from "react";
+
+export default function Country(props) {
+  return (
+    <div className="Country">
+      The capital city of {props.country.name} is {props.country.capital}
+    </div>
+  );
+}
